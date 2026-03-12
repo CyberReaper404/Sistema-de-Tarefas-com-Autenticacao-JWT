@@ -144,7 +144,7 @@ VITE_API_URL=https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api
 
 URL publicada:
 
-- `https://cyberreaper404-todo-auth.vercel.app/`
+- `https://cyberreaper404-todo-auth.vercel.app/](https://sistema-de-tarefas-com-autenticacao.vercel.app/)`
 
 ### Backend Python no Render
 
