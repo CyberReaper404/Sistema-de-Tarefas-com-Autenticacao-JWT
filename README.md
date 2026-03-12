@@ -23,7 +23,7 @@ A proposta foi implementar o mesmo sistema de tarefas em duas stacks de backend 
 
 Links publicados:
 
-- Frontend: `https://cyberreaper404-todo-auth.vercel.app/`
+- Frontend: `https://sistema-de-tarefas-com-autenticacao.vercel.app/`
 - API: `https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api/health`
 
 ## Funcionalidades
