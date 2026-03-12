@@ -10,22 +10,24 @@ jobs:
     name: Check deployed services
     runs-on: ubuntu-latest
     steps:
-      - name: Validate configuration
+      - name: Normalize configuration
         env:
           API_HEALTH_URL: ${{ vars.API_HEALTH_URL }}
           FRONTEND_URL: ${{ vars.FRONTEND_URL }}
         run: |
+          API_HEALTH_URL="$(printf '%s' "$API_HEALTH_URL" | tr -d '\r' | xargs)"
+          FRONTEND_URL="$(printf '%s' "$FRONTEND_URL" | tr -d '\r' | xargs)"
+
           if [ -z "$API_HEALTH_URL" ] || [ -z "$FRONTEND_URL" ]; then
             echo "Configure API_HEALTH_URL and FRONTEND_URL in repository variables."
             exit 1
           fi
 
+          printf 'API_HEALTH_URL=%s\n' "$API_HEALTH_URL" >> "$GITHUB_ENV"
+          printf 'FRONTEND_URL=%s\n' "$FRONTEND_URL" >> "$GITHUB_ENV"
+
       - name: Check API health
-        env:
-          API_HEALTH_URL: ${{ vars.API_HEALTH_URL }}
-        run: curl --fail --silent --show-error "$API_HEALTH_URL"
+        run: curl --fail --silent --show-error --location "$API_HEALTH_URL"
 
       - name: Check frontend
-        env:
-          FRONTEND_URL: ${{ vars.FRONTEND_URL }}
-        run: curl --fail --silent --show-error "$FRONTEND_URL"
+        run: curl --fail --silent --show-error --location "$FRONTEND_URL"
