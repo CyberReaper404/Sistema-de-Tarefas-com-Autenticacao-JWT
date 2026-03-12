@@ -1,69 +1,108 @@
 # Sistema de Tarefas com Autenticacao JWT
 
+<div align="left">
+  <img src="https://img.shields.io/badge/Python-3.12-blue" alt="Python 3.12" />
+  <img src="https://img.shields.io/badge/Flask-3.0-green" alt="Flask 3.0" />
+  <img src="https://img.shields.io/badge/C%23-.NET_8-purple" alt=".NET 8" />
+  <img src="https://img.shields.io/badge/React-18-61DAFB" alt="React 18" />
+  <img src="https://img.shields.io/badge/Auth-JWT-orange" alt="JWT" />
+  <img src="https://img.shields.io/badge/PostgreSQL-Render-336791" alt="PostgreSQL Render" />
+  <img src="https://img.shields.io/badge/Vercel-Frontend-black" alt="Vercel Frontend" />
+  <img src="https://img.shields.io/badge/status-concluido-success" alt="Status concluido" />
+  <img src="https://img.shields.io/badge/licenca-MIT-green" alt="Licenca MIT" />
+</div>
+
 [![CI](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/ci.yml)
 [![Uptime Check](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/uptime.yml/badge.svg?branch=main)](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/uptime.yml)
 
-<p align="left">
-  <img src="https://img.shields.io/badge/Python-3.12%2B-blue" alt="Python 3.12+" />
-  <img src="https://img.shields.io/badge/Flask-3.0-green" alt="Flask 3.0" />
-  <img src="https://img.shields.io/badge/C%23-.NET_8-purple" alt="C# .NET 8" />
-  <img src="https://img.shields.io/badge/React-18-61DAFB" alt="React 18" />
-  <img src="https://img.shields.io/badge/Auth-JWT%20Access%2FRefresh-orange" alt="JWT" />
-  <img src="https://img.shields.io/badge/DB-SQLite%20%7C%20PostgreSQL-4479A1" alt="SQLite | PostgreSQL" />
-  <img src="https://img.shields.io/badge/licenca-MIT-green" alt="Licenca MIT" />
-</p>
+## Sobre o Projeto
 
-## Visao Geral
+Este projeto foi desenvolvido com o objetivo de praticar a construcao de uma aplicacao web completa, cobrindo front-end, back-end, banco de dados, autenticacao e deploy.
 
-Este projeto e uma aplicacao full stack de gerenciamento de tarefas com autenticacao JWT, isolamento por usuario e fluxo completo de criacao, edicao e organizacao de tarefas.
+A proposta foi implementar o mesmo sistema de tarefas em duas stacks de backend diferentes, uma em Python com Flask e outra em C# com ASP.NET Core, mantendo a mesma ideia de negocio e a mesma experiencia no frontend.
 
-A proposta foi desenvolver a mesma solucao em duas stacks de backend para demonstrar dominio de conceitos comuns em projetos reais, como autenticacao, persistencia, organizacao por camadas, validacao automatizada e deploy.
+Links publicados:
 
-Projeto publicado:
 - Frontend: `https://cyberreaper404-todo-auth.vercel.app/`
 - API: `https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api/health`
 
-## O que a aplicacao faz
+## Funcionalidades
 
-- Cadastro e login de usuarios
-- Autenticacao com access token e refresh token
+- Cadastro e autenticacao de usuarios com JWT
+- Access token e refresh token
 - CRUD completo de tarefas
 - Marcacao de tarefas como concluidas ou pendentes
-- Filtro por status: `all`, `pending`, `completed`
-- Isolamento de dados por usuario autenticado
+- Filtros por status: `all`, `pending`, `completed`
+- Isolamento por usuario: cada conta acessa apenas as proprias tarefas
+- Duas implementacoes backend: Flask e ASP.NET Core
+- Frontend integrado com API publicada em producao
 
-## Stack utilizada
-
-- Frontend: React + Vite
-- Backend Python: Flask + SQLAlchemy + Alembic
-- Backend C#: ASP.NET Core + Entity Framework Core
-- Banco de dados: SQLite para desenvolvimento local e PostgreSQL para deploy
-- Autenticacao: JWT
-
-## Estrutura do repositorio
+## Arquitetura do Projeto
 
 ```text
 /
-|-- frontend/
-|-- backend-python/
-|-- backend-dotnet/
-|-- backend-dotnet-tests/
-|-- scripts/
-|-- render.yaml
-`-- .github/workflows/
-Como rodar localmente
-Opcao rapida
+|-- frontend/               # Aplicacao React + Vite
+|-- backend-python/         # API em Flask com JWT, SQLAlchemy e Alembic
+|-- backend-dotnet/         # API em ASP.NET Core com JWT e EF Core
+|-- backend-dotnet-tests/   # Testes automatizados do backend C#
+|-- scripts/                # Scripts para execucao local
+|-- render.yaml             # Configuracao de deploy da API Python
+`-- .github/workflows/      # CI e monitoramento
+```
+
+## Tecnologias Utilizadas
+
+### Frontend
+
+- React
+- Vite
+- Vitest
+- Testing Library
+
+### Backend Python
+
+- Flask
+- Flask-SQLAlchemy
+- Flask-JWT-Extended
+- Alembic
+- Gunicorn
+
+### Backend C#
+
+- ASP.NET Core Web API
+- Entity Framework Core
+- JWT Bearer Authentication
+- xUnit
+
+### Banco de Dados
+
+- SQLite para desenvolvimento local
+- PostgreSQL para producao
+
+## Como Executar
+
+### Execucao Rapida
+
+```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\start-python-stack.ps1
+```
+
 Ambiente local:
 
-Frontend: http://localhost:5173
-API Python: http://localhost:5000
-Para parar:
+- Frontend: `http://localhost:5173`
+- API Python: `http://localhost:5000`
 
+Para encerrar:
+
+```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\stop-python-stack.ps1
-Opcao manual
-Backend Python:
+```
 
+### Execucao Manual
+
+#### Backend Python
+
+```powershell
 cd backend-python
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -71,81 +110,142 @@ pip install -r requirements.txt
 $env:DATABASE_URL="sqlite:///$((Join-Path (Get-Location) 'todo.db') -replace '\\','/')"
 python -m alembic -c alembic.ini upgrade head
 python run.py
-Backend C#:
+```
 
+#### Backend C#
+
+```powershell
 cd backend-dotnet
 dotnet restore
 dotnet run
-Frontend:
+```
 
+#### Frontend
+
+```powershell
 cd frontend
 npm install
 copy /Y .env.example .env
 npm run dev
-Deploy
-Backend no Render
-Configuracao usada no deploy:
+```
 
-Root Directory: backend-python
-Build Command: pip install -r requirements.txt
-Start Command: bash start.sh
-Variaveis de ambiente principais:
+## Deploy
 
-DATABASE_URL
-SECRET_KEY
-JWT_SECRET_KEY
+### Frontend no Vercel
+
+Configuracao utilizada:
+
+- Root Directory: `frontend`
+- Variavel de ambiente:
+
+```text
+VITE_API_URL=https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api
+```
+
+URL publicada:
+
+- `https://cyberreaper404-todo-auth.vercel.app/`
+
+### Backend Python no Render
+
+Configuracao utilizada:
+
+- Root Directory: `backend-python`
+- Build Command:
+
+```text
+pip install -r requirements.txt
+```
+
+- Start Command:
+
+```text
+bash start.sh
+```
+
+- Variaveis principais:
+
+```text
+DATABASE_URL=<postgres-url>
+SECRET_KEY=<secret>
+JWT_SECRET_KEY=<secret>
 JWT_ACCESS_TOKEN_MINUTES=30
 JWT_REFRESH_TOKEN_DAYS=7
 CORS_ALLOWED_ORIGINS=https://cyberreaper404-todo-auth.vercel.app
+```
+
 Health check:
 
-https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api/health
-Frontend no Vercel
-Configuracao usada no deploy:
+- `https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api/health`
 
-Root Directory: frontend
-Variavel de ambiente:
+## Endpoints da API
 
-VITE_API_URL=https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api
-Projeto publicado:
+### Autenticacao
 
-https://cyberreaper404-todo-auth.vercel.app/
-Testes e automacao
-Este repositorio possui GitHub Actions para duas finalidades:
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `POST /api/auth/refresh`
+- `POST /api/auth/logout`
 
-CI: roda automaticamente testes e build do frontend, smoke test da API Python e testes da API C# a cada push ou pull request
-Uptime Check: faz verificacoes agendadas do frontend e da API publicados
-Para o monitoramento funcionar no GitHub Actions, configure em Settings > Secrets and variables > Actions > Variables:
+### Tarefas
 
-API_HEALTH_URL=https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api/health
-FRONTEND_URL=https://cyberreaper404-todo-auth.vercel.app/
-Comandos de teste
-Python:
+- `GET /api/tasks?status=all`
+- `GET /api/tasks?status=pending`
+- `GET /api/tasks?status=completed`
+- `POST /api/tasks`
+- `PUT /api/tasks/{id}`
+- `DELETE /api/tasks/{id}`
 
+## Testes
+
+### Python
+
+```powershell
 cd backend-python
 .\.venv\Scripts\python.exe smoke_test.py
-Frontend:
+```
 
+### C#
+
+```powershell
+cd backend-dotnet-tests
+dotnet test
+```
+
+### Frontend
+
+```powershell
 cd frontend
 npm run test:run
 npm run build
-C#:
+```
 
-cd backend-dotnet-tests
-dotnet test
-Endpoints principais
-Auth:
+## GitHub Actions
 
-POST /api/auth/register
-POST /api/auth/login
-POST /api/auth/refresh
-POST /api/auth/logout
-Tasks:
+Este projeto possui automacoes configuradas para:
 
-GET /api/tasks?status=all|pending|completed
-POST /api/tasks
-PUT /api/tasks/{id}
-DELETE /api/tasks/{id}
-Licenca
-Distribuido sob a licenca MIT. Veja LICENSE.
+- Rodar testes e build automaticamente a cada `push` ou `pull request`
+- Verificar periodicamente se frontend e API continuam online
 
+Para o monitoramento funcionar no GitHub, configure as variables do repositorio:
+
+```text
+API_HEALTH_URL=https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api/health
+FRONTEND_URL=https://cyberreaper404-todo-auth.vercel.app/
+```
+
+## Objetivo do Projeto
+
+Este projeto foi pensado para demonstrar pratica em:
+
+- Criacao de APIs REST
+- Autenticacao com JWT
+- Integracao entre frontend e backend
+- Persistencia em banco relacional
+- Testes automatizados
+- CI com GitHub Actions
+- Deploy em producao
+
+## Licenca
+
+Este projeto esta sob a licenca MIT. Consulte o arquivo `LICENSE` para mais informacoes.
