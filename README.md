@@ -15,7 +15,7 @@
 [![CI](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/ci.yml)
 [![Uptime Check](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/uptime.yml/badge.svg?branch=main)](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/uptime.yml)
 
-## Sobre o Projeto
+## Sobre o Projeto:
 
 Este projeto foi desenvolvido com o objetivo de praticar a construcao de uma aplicacao web completa, cobrindo front-end, back-end, banco de dados, autenticacao e deploy.
 
