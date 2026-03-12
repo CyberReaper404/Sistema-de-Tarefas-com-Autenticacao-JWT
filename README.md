@@ -15,11 +15,7 @@
 [![CI](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/ci.yml)
 [![Uptime Check](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/uptime.yml/badge.svg?branch=main)](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/uptime.yml)
 
-<<<<<<< Updated upstream
-## Sobre o Projeto:
-=======
 ## Sobre o Projeto
->>>>>>> Stashed changes
 
 Este projeto foi desenvolvido com o objetivo de praticar a construcao de uma aplicacao web completa, cobrindo front-end, back-end, banco de dados, autenticacao e deploy.
 
@@ -27,11 +23,7 @@ A proposta foi implementar o mesmo sistema de tarefas em duas stacks de backend 
 
 Links publicados:
 
-<<<<<<< Updated upstream
 - Frontend: `https://sistema-de-tarefas-com-autenticacao.vercel.app/`
-=======
-- Frontend: `https://cyberreaper404-todo-auth.vercel.app/`
->>>>>>> Stashed changes
 - API: `https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api/health`
 
 ## Funcionalidades
@@ -152,11 +144,7 @@ VITE_API_URL=https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api
 
 URL publicada:
 
-<<<<<<< Updated upstream
-- `https://cyberreaper404-todo-auth.vercel.app/](https://sistema-de-tarefas-com-autenticacao.vercel.app/)`
-=======
-- `https://cyberreaper404-todo-auth.vercel.app/`
->>>>>>> Stashed changes
+- `https://sistema-de-tarefas-com-autenticacao.vercel.app/`
 
 ### Backend Python no Render
 
@@ -183,7 +171,7 @@ SECRET_KEY=<secret>
 JWT_SECRET_KEY=<secret>
 JWT_ACCESS_TOKEN_MINUTES=30
 JWT_REFRESH_TOKEN_DAYS=7
-CORS_ALLOWED_ORIGINS=https://cyberreaper404-todo-auth.vercel.app
+CORS_ALLOWED_ORIGINS=https://sistema-de-tarefas-com-autenticacao.vercel.app
 ```
 
 Health check:
@@ -242,8 +230,8 @@ Este projeto possui automacoes configuradas para:
 Para o monitoramento funcionar no GitHub, configure as variables do repositorio:
 
 ```text
-API_HEALTH_URL=https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api/health
-FRONTEND_URL=https://cyberreaper404-todo-auth.vercel.app/
+API_HEALTH_URL=https://todo-api-python-3nxj.onrender.com/api/health
+FRONTEND_URL=https://sistema-de-tarefas-com-autenticacao.vercel.app/
 ```
 
 ## Objetivo do Projeto
