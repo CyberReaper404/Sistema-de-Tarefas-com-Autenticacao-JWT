@@ -1,7 +1,7 @@
 # Sistema de Tarefas com Autenticacao JWT
 
-[![CI](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autentica-o-JWT/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autentica-o-JWT/actions/workflows/ci.yml)
-[![Uptime Check](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autentica-o-JWT/actions/workflows/uptime.yml/badge.svg?branch=main)](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autentica-o-JWT/actions/workflows/uptime.yml)
+[![CI](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/ci.yml)
+[![Uptime Check](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/uptime.yml/badge.svg?branch=main)](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/uptime.yml)
 
 <p align="left">
   <img src="https://img.shields.io/badge/Python-3.12%2B-blue" alt="Python 3.12+" />
@@ -17,18 +17,18 @@
 
 Este projeto e uma aplicacao full stack de gerenciamento de tarefas com autenticacao JWT, isolamento por usuario e fluxo completo de criacao, edicao e organizacao de tarefas.
 
-A ideia aqui foi construir a mesma solucao em duas stacks de backend para exercitar conceitos que aparecem em projetos reais: autenticacao, persistencia, organizacao por camadas, validacao automatizada e deploy.
+A proposta foi desenvolver a mesma solucao em duas stacks de backend para demonstrar dominio de conceitos comuns em projetos reais, como autenticacao, persistencia, organizacao por camadas, validacao automatizada e deploy.
 
-Frontend publicado:
-
-- `https://cyberreaper404-todo-auth.vercel.app/`
+Projeto publicado:
+- Frontend: `https://cyberreaper404-todo-auth.vercel.app/`
+- API: `https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api/health`
 
 ## O que a aplicacao faz
 
 - Cadastro e login de usuarios
-- Access token e refresh token
+- Autenticacao com access token e refresh token
 - CRUD completo de tarefas
-- Marcacao de tarefas como concluidas
+- Marcacao de tarefas como concluidas ou pendentes
 - Filtro por status: `all`, `pending`, `completed`
 - Isolamento de dados por usuario autenticado
 
@@ -37,7 +37,7 @@ Frontend publicado:
 - Frontend: React + Vite
 - Backend Python: Flask + SQLAlchemy + Alembic
 - Backend C#: ASP.NET Core + Entity Framework Core
-- Banco de dados: SQLite para desenvolvimento rapido e PostgreSQL para deploy
+- Banco de dados: SQLite para desenvolvimento local e PostgreSQL para deploy
 - Autenticacao: JWT
 
 ## Estrutura do repositorio
@@ -51,32 +51,19 @@ Frontend publicado:
 |-- scripts/
 |-- render.yaml
 `-- .github/workflows/
-```
-
-## Como rodar localmente
-
-### Opcao rapida
-
-```powershell
+Como rodar localmente
+Opcao rapida
 powershell -ExecutionPolicy Bypass -File .\scripts\start-python-stack.ps1
-```
-
 Ambiente local:
 
-- Frontend: `http://localhost:5173`
-- API Python: `http://localhost:5000`
-
+Frontend: http://localhost:5173
+API Python: http://localhost:5000
 Para parar:
 
-```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\stop-python-stack.ps1
-```
-
-### Opcao manual
-
+Opcao manual
 Backend Python:
 
-```powershell
 cd backend-python
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -84,101 +71,81 @@ pip install -r requirements.txt
 $env:DATABASE_URL="sqlite:///$((Join-Path (Get-Location) 'todo.db') -replace '\\','/')"
 python -m alembic -c alembic.ini upgrade head
 python run.py
-```
-
 Backend C#:
 
-```powershell
 cd backend-dotnet
 dotnet restore
 dotnet run
-```
-
 Frontend:
 
-```powershell
 cd frontend
 npm install
 copy /Y .env.example .env
 npm run dev
-```
+Deploy
+Backend no Render
+Configuracao usada no deploy:
 
-## Deploy
+Root Directory: backend-python
+Build Command: pip install -r requirements.txt
+Start Command: bash start.sh
+Variaveis de ambiente principais:
 
-### Backend no Render
+DATABASE_URL
+SECRET_KEY
+JWT_SECRET_KEY
+JWT_ACCESS_TOKEN_MINUTES=30
+JWT_REFRESH_TOKEN_DAYS=7
+CORS_ALLOWED_ORIGINS=https://cyberreaper404-todo-auth.vercel.app
+Health check:
 
-- Criar um banco PostgreSQL
-- Criar o servico web usando `render.yaml`
-- Configurar:
-- `DATABASE_URL`
-- `SECRET_KEY`
-- `JWT_SECRET_KEY`
-- `JWT_ACCESS_TOKEN_MINUTES=30`
-- `JWT_REFRESH_TOKEN_DAYS=7`
-- `CORS_ALLOWED_ORIGINS=https://cyberreaper404-todo-auth.vercel.app`
+https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api/health
+Frontend no Vercel
+Configuracao usada no deploy:
 
-Health check esperado:
+Root Directory: frontend
+Variavel de ambiente:
 
-- `https://SEU-BACKEND.onrender.com/api/health`
+VITE_API_URL=https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api
+Projeto publicado:
 
-### Frontend no Vercel
-
-- Importar o projeto
-- Definir `Root Directory` como `frontend`
-- Configurar `VITE_API_URL=https://SEU-BACKEND.onrender.com/api`
-
-## Testes e automacao
-
+https://cyberreaper404-todo-auth.vercel.app/
+Testes e automacao
 Este repositorio possui GitHub Actions para duas finalidades:
 
-- `CI`: roda automaticamente testes e build do frontend, smoke test da API Python e testes da API C# a cada `push` ou `pull request`
-- `Uptime Check`: faz verificacoes agendadas do frontend e da API publicados
+CI: roda automaticamente testes e build do frontend, smoke test da API Python e testes da API C# a cada push ou pull request
+Uptime Check: faz verificacoes agendadas do frontend e da API publicados
+Para o monitoramento funcionar no GitHub Actions, configure em Settings > Secrets and variables > Actions > Variables:
 
-Para o monitoramento funcionar no GitHub Actions, configure em `Settings > Secrets and variables > Actions > Variables`:
-
-- `API_HEALTH_URL`
-- `FRONTEND_URL=https://cyberreaper404-todo-auth.vercel.app/`
-
-## Comandos de teste
-
+API_HEALTH_URL=https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api/health
+FRONTEND_URL=https://cyberreaper404-todo-auth.vercel.app/
+Comandos de teste
 Python:
 
-```powershell
 cd backend-python
 .\.venv\Scripts\python.exe smoke_test.py
-```
-
 Frontend:
 
-```powershell
 cd frontend
 npm run test:run
 npm run build
-```
-
 C#:
 
-```powershell
 cd backend-dotnet-tests
 dotnet test
-```
-
-## Endpoints principais
-
+Endpoints principais
 Auth:
 
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-- `POST /api/auth/refresh`
-- `POST /api/auth/logout`
-
+POST /api/auth/register
+POST /api/auth/login
+POST /api/auth/refresh
+POST /api/auth/logout
 Tasks:
 
-- `GET /api/tasks?status=all|pending|completed`
-- `POST /api/tasks`
-- `PUT /api/tasks/{id}`
-- `DELETE /api/tasks/{id}`
+GET /api/tasks?status=all|pending|completed
+POST /api/tasks
+PUT /api/tasks/{id}
+DELETE /api/tasks/{id}
+Licenca
+Distribuido sob a licenca MIT. Veja LICENSE.
 
-## Licenca
-
-Distribuido sob a licenca MIT. Veja `LICENSE`.
