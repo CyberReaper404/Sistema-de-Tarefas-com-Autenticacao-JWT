@@ -15,7 +15,11 @@
 [![CI](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/ci.yml)
 [![Uptime Check](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/uptime.yml/badge.svg?branch=main)](https://github.com/CyberReaper404/Sistema-de-Tarefas-com-Autenticacao-JWT/actions/workflows/uptime.yml)
 
+<<<<<<< Updated upstream
 ## Sobre o Projeto:
+=======
+## Sobre o Projeto
+>>>>>>> Stashed changes
 
 Este projeto foi desenvolvido com o objetivo de praticar a construcao de uma aplicacao web completa, cobrindo front-end, back-end, banco de dados, autenticacao e deploy.
 
@@ -23,7 +27,11 @@ A proposta foi implementar o mesmo sistema de tarefas em duas stacks de backend 
 
 Links publicados:
 
+<<<<<<< Updated upstream
 - Frontend: `https://sistema-de-tarefas-com-autenticacao.vercel.app/`
+=======
+- Frontend: `https://cyberreaper404-todo-auth.vercel.app/`
+>>>>>>> Stashed changes
 - API: `https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api/health`
 
 ## Funcionalidades
@@ -144,7 +152,11 @@ VITE_API_URL=https://sistema-de-tarefas-com-autenticacao-jwt.onrender.com/api
 
 URL publicada:
 
+<<<<<<< Updated upstream
 - `https://cyberreaper404-todo-auth.vercel.app/](https://sistema-de-tarefas-com-autenticacao.vercel.app/)`
+=======
+- `https://cyberreaper404-todo-auth.vercel.app/`
+>>>>>>> Stashed changes
 
 ### Backend Python no Render
 
