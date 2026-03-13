@@ -19,7 +19,7 @@
 
 Este projeto foi desenvolvido com o objetivo de praticar a construcao de uma aplicacao web completa, cobrindo front-end, back-end, banco de dados, autenticacao e deploy.
 
-A proposta foi implementar o mesmo sistema de tarefas em duas stacks de backend diferentes, uma em Python com Flask e outra em C# com ASP.NET Core, mantendo a mesma ideia de negocio e a mesma experiencia no frontend.
+A proposta foi implementar o mesmo sistema de tarefas em duas stacks de backend diferentes, uma em Python com Flask e outra em C# com ASP.NET Core, mantendo a mesma regra de negocio e a mesma experiencia no frontend.
 
 Links publicados:
 
@@ -34,7 +34,7 @@ Links publicados:
 - Marcacao de tarefas como concluidas ou pendentes
 - Filtros por status: `all`, `pending`, `completed`
 - Isolamento por usuario: cada conta acessa apenas as proprias tarefas
-- Duas implementacoes backend: Flask e ASP.NET Core
+- Duas implementacoes de backend: Flask e ASP.NET Core
 - Frontend integrado com API publicada em producao
 
 ## Arquitetura do Projeto
@@ -227,7 +227,7 @@ Este projeto possui automacoes configuradas para:
 - Rodar testes e build automaticamente a cada `push` ou `pull request`
 - Verificar periodicamente se frontend e API continuam online
 
-Para o monitoramento funcionar no GitHub, configure as variables do repositorio:
+Para que o monitoramento funcione no GitHub, configure as variables do repositorio:
 
 ```text
 API_HEALTH_URL=https://todo-api-python-3nxj.onrender.com/api/health
